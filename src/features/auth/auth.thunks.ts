@@ -1,18 +1,19 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { loginApi } from "../../api/auth.api";
-import type { ApiError } from "../../api/types";
+import type { LoginSchema } from "./auth.schema";
+import type { AuthSuccessResponse } from "../../api/types";
 
-export const login = createAsyncThunk<
-  // Return type
-  Awaited<ReturnType<typeof loginApi>>,
-  // Args
-  { email: string; password: string },
-  // Thunk config
-  { rejectValue: ApiError }
->("auth/login", async ({ email, password }, { rejectWithValue }) => {
-  try {
-    return await loginApi(email, password);
-  } catch (error) {
-    return rejectWithValue(error as ApiError);
+export const login = createAsyncThunk<AuthSuccessResponse, LoginSchema>(
+  "auth/login",
+  async ({ email, password }, thunkAPI) => {
+    try {
+      const response = await loginApi(email, password);
+      return response;
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(
+        error.response?.data || { message: "Login failed" }
+      );
+    }
   }
-});
+);

@@ -11,6 +11,10 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  width: 100vw;
+  height: 100vh;
+  background-color: #646cff;
 }
 
 a {
@@ -23,11 +27,17 @@ a:hover {
 }
 
 body {
+  background-color: darkgoldenrod ;
   margin: 0;
   display: flex;
+  justify-content: center;
+  align-items: center;
   place-items: center;
+  width: 100vw;
+  height: 100vh;
   min-width: 320px;
   min-height: 100vh;
+  padding: 20px;
 }
 
 h1 {

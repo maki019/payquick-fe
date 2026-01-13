@@ -1,3 +1,5 @@
+import type { loginApi } from "./auth.api";
+
 // AUTH
 export type User = {
   user_id: string;
@@ -16,6 +18,12 @@ export type LoginResponse = {
     user: User;
   };
 };
+
+export type AuthSuccessResponse = Awaited<ReturnType<typeof loginApi>>;
+export type AuthErrorResponse = Awaited<{
+  status: string;
+  message: string;
+}>;
 
 // TRANSACTIONS
 export type Transaction = {

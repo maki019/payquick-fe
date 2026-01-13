@@ -21,13 +21,7 @@ const initialState: TransactionsState = {
 const transactionsSlice = createSlice({
   name: "transactions",
   initialState,
-  reducers: {
-    clearTransactions(state) {
-      state.items = [];
-      state.currentPage = 1;
-      state.totalPages = 1;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchTransactions.pending, (state) => {
@@ -47,5 +41,5 @@ const transactionsSlice = createSlice({
   },
 });
 
-export const { clearTransactions } = transactionsSlice.actions;
+// export const { clearTransactions } = transactionsSlice.actions;
 export default transactionsSlice.reducer;
