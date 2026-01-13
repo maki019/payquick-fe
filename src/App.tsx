@@ -1,4 +1,4 @@
-import { loginApi } from "./api/auth";
+import { loginApi } from "./api/auth.api";
 
 function App() {
   loginApi("smith@example.com", "pass123")
