@@ -40,12 +40,14 @@ This demo focuses on:
 ```bash
 git clone git@github.com:maki019/payquick-fe.git
 cd payquick-fe
+npm run dev
 ```
 
 **or**
 ```bash
 git clone https://github.com/maki019/payquick-fe.git
 cd payquick-fe
+npm run dev
 ```
 
 ---
