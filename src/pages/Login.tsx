@@ -45,14 +45,14 @@ export default function Login() {
   };
 
   return (
-    <div className="p-4 min-h-screen lg:grid lg:grid-cols-[40%_60%] w-full h-screen flex items-center justify-center bg-linear-to-br from-gray-100 to-gray-200">
-      <Card className="w-full h-full text-[#05061E] border-0">
+    <div className="relative p-4 min-h-screen sm:grid sm:grid-cols-[40%_60%] w-full h-screen flex items-center justify-center bg-linear-to-br from-gray-100 to-gray-200">
+      <Card className="w-full h-full z-10 text-[#05061E] border-0 rounded-2xl shadow-lg bg-white/85 sm:bg-white">
         <CardHeader>
           <img src={Logo} alt="PayQuick logo" height={56} width={208} />
-          <CardTitle className="mt-30 text-[60px] font-normal">
+          <CardTitle className="mt-30 text-6xl sm:text-[60px] font-normal">
             Welcome back!
           </CardTitle>
-          <CardDescription className="text-xl font-light">
+          <CardDescription className="text-xl font-light mt-2 sm:mt-0">
             Please enter your details to log in to your PayQuick account.
           </CardDescription>
         </CardHeader>
@@ -105,12 +105,12 @@ export default function Login() {
           </CardFooter>
         </form>
       </Card>
-      <div className="px-4 w-full h-full">
-        <div className="bg-[#300B57] w-full h-full rounded-2xl flex items-center justify-start">
+      <div className="w-full h-full absolute z-0 sm:px-4 sm:static ">
+        <div className="w-full h-full sm:rounded-2xl flex items-center justify-start">
           <img
             src={Background}
             alt="Login Background"
-            className="h-full w-auto object-cover rounded-2xl"
+            className="h-full w-auto object-cover sm:rounded-2xl"
           />
         </div>
       </div>

@@ -9,6 +9,10 @@ import Login from "./pages/Login";
 import Transactions from "./pages/Transactions";
 import { useAppSelector } from "./store/hooks";
 import ProtectedLayout from "./components/layout/ProtectedLayout";
+import PageNotFound from "./pages/PageNotFound";
+import Dashboard from "./pages/Dashboard";
+import Profile from "./pages/Profile";
+import Settings from "./pages/Settings";
 
 function ProtectedRoute({ children }: { children: JSX.Element }) {
   const isAuthenticated = useAppSelector((state) => state.auth.isAuthenticated);
@@ -36,11 +40,15 @@ export default function App() {
           }
         >
           <Route path="/transactions" element={<Transactions />} />
+          <Route path="/page-not-found" element={<PageNotFound />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/settings" element={<Settings />} />
           {/* Add more protected pages here */}
         </Route>
 
         {/* Catch all */}
-        <Route path="*" element={<Navigate to="/login" replace />} />
+        <Route path="*" element={<Navigate to="/page-not-found" replace />} />
       </Routes>
     </Router>
   );

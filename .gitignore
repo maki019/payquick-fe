@@ -12,7 +12,8 @@ dist
 dist-ssr
 *.local
 
-.env
+# ideally, env files should be added to .gitignore to prevent sensitive information from being committed
+# .env 
 # .env.local
 # .env.development
 # .env.production
