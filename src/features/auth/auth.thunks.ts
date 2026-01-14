@@ -12,7 +12,9 @@ export const login = createAsyncThunk<AuthSuccessResponse, LoginSchema>(
       return response;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(
-        error.response?.data || { message: "Login failed" }
+        error.response?.data || {
+          message: "Login failed. Please check you credentials.",
+        }
       );
     }
   }

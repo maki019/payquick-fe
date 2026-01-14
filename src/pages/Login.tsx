@@ -5,6 +5,19 @@ import { login } from "../features/auth/auth.thunks";
 import { loginSchema, type LoginSchema } from "../features/auth/auth.schema";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Label } from "@radix-ui/react-dropdown-menu";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import Logo from "@/assets/payquick-logo.svg";
+import Background from "@/assets/login-bg.jpg";
 
 export default function Login() {
   const dispatch = useAppDispatch();
@@ -32,46 +45,75 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center">
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="w-80 p-6 border rounded space-y-4"
-      >
-        <h1 className="text-xl font-semibold">Login</h1>
+    <div className="p-4 min-h-screen lg:grid lg:grid-cols-[40%_60%] w-full h-screen flex items-center justify-center bg-linear-to-br from-gray-100 to-gray-200">
+      <Card className="w-full h-full text-[#05061E] border-0">
+        <CardHeader>
+          <img src={Logo} alt="PayQuick logo" height={56} width={208} />
+          <CardTitle className="mt-30 text-[60px] font-normal">
+            Welcome back!
+          </CardTitle>
+          <CardDescription className="text-xl font-light">
+            Please enter your details to log in to your PayQuick account.
+          </CardDescription>
+        </CardHeader>
 
-        <div>
-          <input
-            {...register("email")}
-            placeholder="Email"
-            className="w-full border p-2 rounded"
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <CardContent className="space-y-6 mt-5">
+            {/* Email */}
+            <div className="space-y-1">
+              <Label>Email</Label>
+              <Input
+                id="email"
+                placeholder="Enter your email address"
+                {...register("email")}
+              />
+              {errors.email && (
+                <p className="text-sm text-red-500">{errors.email.message}</p>
+              )}
+            </div>
+
+            {/* Password */}
+            <div className="space-y-1">
+              <Label>Password</Label>
+              <Input
+                id="password"
+                type="password"
+                placeholder="Enter your password"
+                {...register("password")}
+              />
+              {errors.password && (
+                <p className="text-sm text-red-500">
+                  {errors.password.message}
+                </p>
+              )}
+            </div>
+
+            {/* API Error */}
+            {error && <p className="text-sm text-red-600">{error}</p>}
+          </CardContent>
+
+          <CardFooter className="mt-5">
+            <Button
+              type="submit"
+              className="w-full bg-[#300B57] hover:bg-[#450D78] text-white font-medium"
+              disabled={isLoading}
+              size={"lg"}
+              variant={"default"}
+            >
+              {isLoading ? "Logging in..." : "Login"}
+            </Button>
+          </CardFooter>
+        </form>
+      </Card>
+      <div className="px-4 w-full h-full">
+        <div className="bg-[#300B57] w-full h-full rounded-2xl flex items-center justify-start">
+          <img
+            src={Background}
+            alt="Login Background"
+            className="h-full w-auto object-cover rounded-2xl"
           />
-          {errors.email && (
-            <p className="text-xs text-red-600">{errors.email.message}</p>
-          )}
         </div>
-
-        <div>
-          <input
-            {...register("password")}
-            type="password"
-            placeholder="Password"
-            className="w-full border p-2 rounded"
-          />
-          {errors.password && (
-            <p className="text-xs text-red-600">{errors.password.message}</p>
-          )}
-        </div>
-
-        {error && <p className="text-sm text-red-600">{error}</p>}
-
-        <button
-          type="submit"
-          disabled={isLoading}
-          className="w-full bg-black text-white py-2 rounded disabled:opacity-50"
-        >
-          {isLoading ? "Logging in..." : "Login"}
-        </button>
-      </form>
+      </div>
     </div>
   );
 }
