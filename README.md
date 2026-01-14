@@ -11,7 +11,7 @@ This demo focuses on:
 - Loading skeletons and error states  
 - Responsive UI using **Tailwind CSS** and **ShadCN UI**  
 
-> **Note:** This is a frontend demo only. The backend endpoints are assumed to be available.
+> **Note:** This is a frontend demo only. The backend endpoints are assumed to be available from the fe_challenge_api repo.
 
 ---
 
@@ -66,5 +66,6 @@ app.use(
   })
 );
 ```
-***This will remove the cors issue if encountered***
+
+This will remove the cors issue if encountered.
 
