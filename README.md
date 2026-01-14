@@ -38,5 +38,33 @@ This demo focuses on:
 1. **Clone the repository**
 
 ```bash
-git clone <your-repo-url>
+git clone git@github.com:maki019/payquick-fe.git
 cd payquick-fe
+```
+
+**or**
+```bash
+git clone https://github.com/maki019/payquick-fe.git
+cd payquick-fe
+```
+
+---
+
+## Additional notes
+***In the fe_challenge_api backend repo, please install cors and the following code in the root index.ts file:***
+```bash
+npm i cors
+```
+***and then add***
+```bash
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
+```
+***This will remove the cors issue if encountered***
+
